@@ -33,16 +33,16 @@ const HeroSection = () => {
                         </form>
 
                         <div className="d-flex my-3">
-                            <h6 className="me-3">
+                            <h6 className="me-1">
                                 <i className="bi bi-check-circle-fill"></i>
-                                <span className="ms-3">
+                                <span className="ms-1">
                                     Update Everyday
                                 </span>
                             </h6>
 
                             <h6>
                                 <i className="bi bi-check-circle-fill"></i>
-                                <span className="ms-3">
+                                <span className="ms-1">
                                     Easy Application From The Email
                                 </span>
                             </h6>
@@ -51,44 +51,17 @@ const HeroSection = () => {
 
                     {/* Right Side */}
                     <div className="col-md-6">
-                        <div className="position-relative">
-                            <img
-                                src="./HeroSection.jpg"
-                                alt="Professional recruitment meeting"
-                                className="img-fluid rounded-4 shadow-sm"
-                                style={{
-                                    width: "100%",
-                                    height: "500px",
-                                    objectFit: "cover"
-                                }}
-                            />
-
-                            {/* Small floating card */}
-                            <div
-                                className="position-absolute bg-white rounded-3 shadow p-3"
-                                style={{
-                                    bottom: "25px",
-                                    left: "25px"
-                                }}
-                            >
-                                <div className="d-flex align-items-center">
-                                    <div className="bg-primary text-white rounded-circle p-2 me-3">
-                                        <i className="bi bi-briefcase-fill"></i>
-                                    </div>
-
-                                    <div>
-                                        <h6 className="mb-0">
-                                            Find Your Opportunity
-                                        </h6>
-                                        <small className="text-muted">
-                                            Start your career journey
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <img 
+                        src="images/HeroSection.jpg" 
+                        alt="job-search-image" 
+                        style={{
+                            width: "100%",
+                            height: "400px",
+                            objectFit: "cover"
+                        }}
+                        className="rounded-4"
+                        />
                     </div>
-
                 </div>
             </div>
         </div>

@@ -6,10 +6,10 @@ const Navbar = () => {
 
                 {/* Logo */}
                 <a
-                    className="navbar-brand fw-bold text-primary fs-4"
+                    className="navbar-brand fw-bold fs-4"
                     href="#"
                 >
-                    skillBridge
+                    skill<span className="text-primary">Bridge</span>
                 </a>
 
                 {/* Mobile Toggle */}
