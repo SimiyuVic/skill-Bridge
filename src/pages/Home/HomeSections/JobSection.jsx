@@ -115,7 +115,7 @@ const JobSection = () => {
                 <p className="text-muted text-center">
                     We have a wide range of jobs, click on one to apply.
                 </p>
-                <JobCards allJobs={jobs} />
+                <JobCards allJobs={jobs.filter(job=>job.discretion === "Contract")} />
             </div>
         </div>
     );

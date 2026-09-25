@@ -32,18 +32,25 @@ const HeroSection = () => {
                             </div>
                         </form>
 
-                        <div className="d-flex my-3">
+                        <div className="my-3">
                             <h6 className="me-1">
-                                <i className="bi bi-check-circle-fill"></i>
+                                <i className="text-primary bi bi-check-circle-fill me-2"></i>
                                 <span className="ms-1">
                                     Update Everyday
                                 </span>
                             </h6>
 
                             <h6>
-                                <i className="bi bi-check-circle-fill"></i>
+                                <i className="text-primary bi bi-check-circle-fill me-2"></i>
                                 <span className="ms-1">
                                     Easy Application From The Email
+                                </span>
+                            </h6>
+
+                            <h6 className="me-1">
+                                <i className="text-primary bi bi-check-circle-fill me-2"></i>
+                                <span className="ms-1">
+                                    Land your dream job
                                 </span>
                             </h6>
                         </div>

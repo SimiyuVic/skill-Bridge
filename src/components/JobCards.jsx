@@ -6,16 +6,47 @@ const JobCards = ({ allJobs }) => {
             <div className="row mt-2">
                 {
                     allJobs.map((job) => (
-                        <div className="col-md-4">
-                            <div className="card p-3 my-2">
-                                <div className="d-flex">
-                                    <h5 className="me-2"> {job.jobTitle} </h5>
-                                    <p className="fw-bold text-danger">{job.discretion}</p>
+                        <div className="col-md-4 mb-4" key={job._id}>
+                            <div className="card h-100 border-0 shadow-sm rounded-4 p-3">
+
+                                {/* Job Title + Type */}
+                                <div className="d-flex justify-content-between mb-2">
+                                    <h5 className="fw-bold mb-0 text-dark">
+                                        {job.jobTitle}
+                                    </h5>
+
+                                    <span className="fw-bold text-danger">
+                                        {job.discretion}
+                                    </span>
                                 </div>
-                                <p><CiLocationOn />  {job.location}</p>
-                                <h6 className="text-primary"> {job.companyName} </h6>
-                                <p> {job.jobDescription.slice(0, 50)} . . . </p>
-                                <button className="btn btn-outline-primary btn-sm">More Details</button>
+
+                                {/* Location */}
+                                <p className="text-muted mb-2">
+                                    <CiLocationOn className="me-1" />
+                                    {job.location}
+                                </p>
+
+                                {/* Company */}
+                                <h6 className="text-primary fw-semibold mb-3">
+                                    {job.companyName}
+                                </h6>
+
+                                {/* Description */}
+                                <p className="text-muted small">
+                                    {job.jobDescription?.slice(0, 100)}...
+                                </p>
+
+                                {/* Footer */}
+                                <div className="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
+                                    <small className="text-muted">
+                                        View opportunity
+                                    </small>
+
+                                    <button className="btn btn-primary btn-sm rounded-pill px-3">
+                                        More Details
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
                     ))
