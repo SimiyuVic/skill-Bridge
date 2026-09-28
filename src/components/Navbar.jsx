@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
@@ -5,12 +6,9 @@ const Navbar = () => {
             <div className="container">
 
                 {/* Logo */}
-                <a
-                    className="navbar-brand fw-bold fs-4"
-                    href="#"
-                >
+                <Link className="navbar-brand fw-bold fs-4" to="/">
                     skill<span className="text-primary">Bridge</span>
-                </a>
+                </Link>
 
                 {/* Mobile Toggle */}
                 <button
@@ -33,49 +31,49 @@ const Navbar = () => {
                     <ul className="navbar-nav mx-auto gap-lg-2">
 
                         <li className="nav-item">
-                            <a
+                            <Link
                                 className="nav-link active fw-medium"
                                 aria-current="page"
-                                href="#"
+                                to="/"
                             >
                                 Home
-                            </a>
+                            </Link>
                         </li>
 
                         <li className="nav-item">
-                            <a
+                            <Link
                                 className="nav-link"
-                                href="#"
+                                to="all-jobs"
                             >
                                 Find Jobs
-                            </a>
+                            </Link>
                         </li>
 
                         <li className="nav-item">
                             <a
                                 className="nav-link"
-                                href="#"
+                                href=""
                             >
                                 For Employers
                             </a>
                         </li>
 
                         <li className="nav-item">
-                            <a
+                            <Link
                                 className="nav-link"
-                                href="#"
+                                to="about-us"
                             >
                                 About Us
-                            </a>
+                            </Link>
                         </li>
 
                         <li className="nav-item">
-                            <a
+                            <Link
                                 className="nav-link"
-                                href="#"
+                                to="contact-us"
                             >
                                 Contact
-                            </a>
+                            </Link>
                         </li>
 
                     </ul>
