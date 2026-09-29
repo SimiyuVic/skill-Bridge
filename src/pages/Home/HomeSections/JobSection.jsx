@@ -1,14 +1,33 @@
 import { useEffect, useState } from "react";
 import JobCards from "../../../components/JobCards";
 
-
-
 const JobSection = () => {
 
     const [jobs, setJobs] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    useEffect(()=>{
-        fetch()
+    useEffect(() => {
+        setTimeout(() => {
+            fetch("http://localhost:4000/jobs")
+                .then((response) => {
+
+                    if (!response.ok) {
+                        throw Error("Cannot Fetch Data!");
+                    }
+
+                    return response.json() //parse the data
+                })
+                .then((data) => {
+                    setJobs(data)
+                    setLoading(false);
+                    setError(false);
+                })
+                .catch((err) => {
+                    setError(err.message);
+                    setLoading(false);
+                })
+        }, 2000)
     }, []);
 
     console.log(jobs);
@@ -22,7 +41,17 @@ const JobSection = () => {
                 <p className="text-muted text-center">
                     We have a wide range of jobs, click on one to apply.
                 </p>
-                <JobCards allJobs={jobs.filter(job=>job.discretion === "Contract")} />
+                {error && <div className="text-danger"> {error} </div>}
+                {loading && <div className="text-success fw-bold"> Loading . . . </div>}
+                {jobs && <JobCards allJobs={jobs.filter(job => job.discretion === "contract")} />}
+                <h4 className="text-center my-3">
+                    Our PartTime Jobs
+                </h4>
+                {jobs && <JobCards allJobs={jobs.filter(job => job.discretion === "parttime")} />}
+                <h4 className="text-center my-3">
+                    Our FullTime Jobs
+                </h4>
+                {jobs && <JobCards allJobs={jobs.filter(job => job.discretion === "fulltime")} />}
             </div>
         </div>
     );

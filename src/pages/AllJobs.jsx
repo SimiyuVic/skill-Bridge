@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 
 const AllJobs = () => {
 
-   const [name, setName] = useState("Victor");
+    const [name, setName] = useState("Victor");
 
-   useEffect(()=>{
-    console.log("Use Effecte ran!")
-   }, [name]);
+
+    useEffect(()=>{
+        console.log("useEffect ran!");
+    }, [name]);
 
     return ( 
         <div>
-            <p> Hello { name } </p>
+            <p>Hello { name } </p>
             <button onClick={()=>setName("Simiyu")} >Change Name</button>
-            All Jobs will be here!
         </div>
      );
 }
