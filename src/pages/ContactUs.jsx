@@ -2,7 +2,13 @@
 const Contact = () => {
     return ( 
         <div>
-            Contact Page will be here!
+            <div>
+                Main div
+            </div>
+            <div className="row">
+                <div className="col-md-6">1</div>
+                <div className="col-md-6">1</div>
+            </div>
         </div>
      );
 }

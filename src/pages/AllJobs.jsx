@@ -7,7 +7,7 @@ const AllJobs = () => {
 
     useEffect(()=>{
         console.log("useEffect ran!");
-    }, [name]);
+    }, []);
 
     return ( 
         <div>
