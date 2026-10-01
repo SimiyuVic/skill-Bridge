@@ -20,10 +20,10 @@ const JobSection = () => {
                         <div className="spinner-border spinner-border-sm" role="status">
                             <span className="visually-hidden">Loading...</span>
                         </div>
-                        <span>Loading Data, please wait...</span>
+                        <span>Loading Jobs, Please wait...</span>
                     </div>
                 )}
-                <JobCards allJobs={jobs.filter(job => job.discretion === "contract")} />
+                {jobs && <JobCards allJobs={jobs.filter(job => job.discretion === "contract")} />}
             </div>
         </div>
     );
