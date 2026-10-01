@@ -1,18 +1,22 @@
-import { useEffect, useState } from "react";
+import JobCards from "../components/JobCards";
+import useFetch from "../hook/useFetch";
 
 const AllJobs = () => {
 
-    const [name, setName] = useState("Victor");
-
-
-    useEffect(()=>{
-        console.log("useEffect ran!");
-    }, []);
+    const { allData:jobs, error, loading } = useFetch("http://localhost:4000/jobs");
 
     return ( 
         <div>
-            <p>Hello { name } </p>
-            <button onClick={()=>setName("Simiyu")} >Change Name</button>
+            <div className="container my-3">
+                <div className="row">
+                    <div className="col-md-3">
+                        1
+                    </div>
+                    <div className="col-md-9">
+                        { jobs && <JobCards allJobs={jobs} /> }
+                    </div>
+                </div>
+            </div>
         </div>
      );
 }

@@ -3,7 +3,7 @@ import useFetch from "../../../hook/useFetch";
 
 const JobSection = () => {
 
-   const { loading, error, allData:jobs } = useFetch("http://localhost:4000/jobs");
+    const { loading, error, allData: jobs } = useFetch("http://localhost:4000/jobs");
 
     return (
         <div>
@@ -15,16 +15,15 @@ const JobSection = () => {
                     We have a wide range of jobs, click on one to apply.
                 </p>
                 {error && <div className="text-danger"> {error} </div>}
-                {loading && <div className="text-success fw-bold"> Loading . . . </div>}
-                {jobs && <JobCards allJobs={jobs.filter(job => job.discretion === "contract")} />}
-                <h4 className="text-center my-3">
-                    Our PartTime Jobs
-                </h4>
-                {jobs && <JobCards allJobs={jobs.filter(job => job.discretion === "parttime")} />}
-                <h4 className="text-center my-3">
-                    Our FullTime Jobs
-                </h4>
-                {jobs && <JobCards allJobs={jobs.filter(job => job.discretion === "fulltime")} />}
+                {loading && (
+                    <div className="d-flex align-items-center gap-2 text-success fw-semibold">
+                        <div className="spinner-border spinner-border-sm" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                        <span>Loading Data, please wait...</span>
+                    </div>
+                )}
+                <JobCards allJobs={jobs.filter(job => job.discretion === "contract")} />
             </div>
         </div>
     );
