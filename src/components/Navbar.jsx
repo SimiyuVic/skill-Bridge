@@ -80,13 +80,13 @@ const Navbar = () => {
 
                     {/* Get Started */}
                     <div className="d-flex mt-3 mt-lg-0">
-                        <a
-                            href="#"
+                        <Link
+                            to="/signup"
                             className="btn btn-primary px-4 py-2 fw-semibold"
                         >
                             Get Started
                             <i className="bi bi-arrow-right ms-2"></i>
-                        </a>
+                        </Link>
                     </div>
 
                 </div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Contact = () => {
 
@@ -15,14 +16,23 @@ const Contact = () => {
 
         const messages = { name, email, phone, message }
 
-        fetch("http://localhost:4000/contact", {
+        fetch("http://localhost:4000/contat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(messages)
         })
+        .then((response)=>{
+            if(!response.ok)
+            {
+                throw Error("Cannot submit the message");
+            }
+        })
         .then(()=>{
-            //add toast message
             redirect("/");
+            toast.success("Message submitted successfully");
+        })
+        .catch((err)=>{
+            toast.error(err.message)
         })
     }
 

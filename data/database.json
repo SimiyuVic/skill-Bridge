@@ -85,6 +85,27 @@
       "phone": "+254798161654",
       "message": "Test redirect",
       "id": "R_As1ZbCb-8"
+    },
+    {
+      "name": "Jane Wangui",
+      "email": "jane@gmail.com",
+      "phone": "0798161654",
+      "message": "Test toast",
+      "id": "AgMkujBwBno"
+    },
+    {
+      "name": "",
+      "email": "",
+      "phone": "",
+      "message": "",
+      "id": "mhVD8SHRKJg"
+    },
+    {
+      "name": "",
+      "email": "",
+      "phone": "",
+      "message": "",
+      "id": "Ij8ynmjqFxs"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
