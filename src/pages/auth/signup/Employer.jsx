@@ -1,88 +1,166 @@
+
 import { Link } from "react-router-dom";
 
 const EmployerSignup = () => {
     return (
-        <div>
-            <div className="container my-3">
-                <div className="row justify-content-center">
-                    <div className="col-md-8  card border-0 shadow-sm">
-                        <div className="row">
-                            <div className="col-md-6 bg-primary">
-                                1
+        <div className="container my-5">
+            <div className="row justify-content-center">
+                <div className="col-md-10 col-lg-9">
+
+                    <div className="card border-0 shadow-sm overflow-hidden">
+                        <div className="row g-0">
+
+                            {/* Left Side */}
+                            <div className="col-md-5 bg-primary text-white d-flex align-items-center">
+                                <div className="p-4 p-lg-5">
+                                    <h2 className="fw-bold mb-3">
+                                        Hire With SkillBridge
+                                    </h2>
+
+                                    <p className="mb-3">
+                                        Create your employer account and
+                                        connect with talented candidates
+                                        looking for their next opportunity.
+                                    </p>
+
+                                    <p className="mb-0">
+                                        Post jobs, discover candidate profiles,
+                                        and find the right talent for your
+                                        organization.
+                                    </p>
+                                </div>
                             </div>
-                            <div className="col-md-6 p-3">
-                                <form >
+
+                            {/* Registration Form */}
+                            <div className="col-md-7 p-4 p-lg-5">
+
+                                <div className="mb-4">
+                                    <h3 className="fw-bold">
+                                        Employer Registration
+                                    </h3>
+
+                                    <p className="text-muted mb-0">
+                                        Create your company account to get started.
+                                    </p>
+                                </div>
+
+                                <form>
+
+                                    {/* Company Name */}
                                     <div className="mb-3">
-                                        <label htmlFor="">
+                                        <label
+                                            htmlFor="companyName"
+                                            className="form-label"
+                                        >
                                             Company Name
                                         </label>
+
                                         <input
                                             type="text"
-                                            placeholder="e.g Travel Companies"
+                                            id="companyName"
+                                            placeholder="e.g. Travel Companies Ltd"
                                             className="form-control"
                                         />
                                     </div>
+
+                                    {/* Company Email */}
                                     <div className="mb-3">
-                                        <label htmlFor="">
+                                        <label
+                                            htmlFor="companyEmail"
+                                            className="form-label"
+                                        >
                                             Company Email
                                         </label>
+
                                         <input
-                                            type="text"
-                                            placeholder="e.g travel@companies.co.ke"
+                                            type="email"
+                                            id="companyEmail"
+                                            placeholder="e.g. info@travelcompanies.co.ke"
                                             className="form-control"
                                         />
                                     </div>
+
+                                    {/* Phone */}
                                     <div className="mb-3">
-                                        <label htmlFor="">
+                                        <label
+                                            htmlFor="phone"
+                                            className="form-label"
+                                        >
                                             Phone Number
                                         </label>
+
                                         <input
-                                            type="text"
-                                            placeholder="e.g +254709090909"
+                                            type="tel"
+                                            id="phone"
+                                            placeholder="e.g. +254709090909"
                                             className="form-control"
                                         />
                                     </div>
+
+                                    {/* Location */}
                                     <div className="mb-3">
-                                        <label htmlFor="">
+                                        <label
+                                            htmlFor="location"
+                                            className="form-label"
+                                        >
                                             Company Location
                                         </label>
+
                                         <input
                                             type="text"
-                                            placeholder="e.g Waiyaki way"
+                                            id="location"
+                                            placeholder="e.g. Waiyaki Way, Nairobi"
                                             className="form-control"
                                         />
                                     </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="">
-                                            Your Password
+
+                                    {/* Password */}
+                                    <div className="mb-4">
+                                        <label
+                                            htmlFor="password"
+                                            className="form-label"
+                                        >
+                                            Password
                                         </label>
+
                                         <input
                                             type="password"
-                                            placeholder="Type your password"
+                                            id="password"
+                                            placeholder="Create a password"
                                             className="form-control"
                                         />
                                     </div>
-                                    <button className="btn btn-primary btn-sm w-100">
-                                        Register Now
+
+                                    <button
+                                        type="submit"
+                                        className="btn btn-primary w-100"
+                                    >
+                                        Create Employer Account
                                     </button>
-                                    <h6 className="text-center my-2">
-                                        Already have an Account?
-                                        <Link 
-                                        to="/login" 
-                                        style={{textDecoration: "none"}}
-                                        className="ms-2"
+
+                                    <div className="text-center mt-4">
+                                        <span className="text-muted">
+                                            Already have an account?
+                                        </span>
+
+                                        <Link
+                                            to="/login"
+                                            className="ms-2 text-decoration-none fw-semibold"
                                         >
                                             Login
                                         </Link>
-                                    </h6>
+                                    </div>
+
                                 </form>
                             </div>
+
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default EmployerSignup;

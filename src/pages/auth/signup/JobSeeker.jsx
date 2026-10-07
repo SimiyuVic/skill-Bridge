@@ -1,80 +1,148 @@
+
 import { Link } from "react-router-dom";
 
 const JobSeeker = () => {
     return (
-        <div>
-            <div className="container my-3">
-                <div className="row justify-content-center">
-                    <div className="col-md-8  card border-0 shadow-sm">
-                        <div className="row">
-                            <div className="col-md-6">
-                                1
+        <div className="container my-5">
+            <div className="row justify-content-center">
+                <div className="col-md-9 col-lg-8">
+
+                    <div className="card border-0 shadow-sm overflow-hidden">
+                        <div className="row g-0">
+
+                            {/* Left Side */}
+                            <div className="col-md-5 bg-primary text-white d-flex align-items-center">
+                                <div className="p-4 p-lg-5">
+                                    <h2 className="fw-bold mb-3">
+                                        Join SkillBridge
+                                    </h2>
+
+                                    <p className="mb-3">
+                                        Create your Job Seeker account and
+                                        discover opportunities that match your
+                                        skills and experience.
+                                    </p>
+
+                                    <p className="mb-0">
+                                        Build your profile, apply for jobs,
+                                        and get discovered by employers.
+                                    </p>
+                                </div>
                             </div>
-                            <div className="col-md-6 p-3">
-                                <form >
+
+                            {/* Registration Form */}
+                            <div className="col-md-7 p-4 p-lg-5">
+
+                                <div className="mb-4">
+                                    <h3 className="fw-bold">
+                                        Job Seeker Registration
+                                    </h3>
+
+                                    <p className="text-muted mb-0">
+                                        Create your account to get started.
+                                    </p>
+                                </div>
+
+                                <form>
+
+                                    {/* Full Name */}
                                     <div className="mb-3">
-                                        <label htmlFor="">
+                                        <label
+                                            htmlFor="fullName"
+                                            className="form-label"
+                                        >
                                             Full Name
                                         </label>
+
                                         <input
                                             type="text"
-                                            placeholder="e.g James Burton"
+                                            id="fullName"
+                                            placeholder="e.g. James Burton"
                                             className="form-control"
                                         />
                                     </div>
+
+                                    {/* Email */}
                                     <div className="mb-3">
-                                        <label htmlFor="">
-                                            Enter Your Email
+                                        <label
+                                            htmlFor="email"
+                                            className="form-label"
+                                        >
+                                            Email Address
                                         </label>
+
                                         <input
-                                            type="text"
-                                            placeholder="e.g james@gmail.com"
+                                            type="email"
+                                            id="email"
+                                            placeholder="e.g. james@gmail.com"
                                             className="form-control"
                                         />
                                     </div>
-                                     <div className="mb-3">
-                                        <label htmlFor="">
+
+                                    {/* Phone */}
+                                    <div className="mb-3">
+                                        <label
+                                            htmlFor="phone"
+                                            className="form-label"
+                                        >
                                             Phone Number
                                         </label>
+
                                         <input
-                                            type="text"
-                                            placeholder="e.g +254709090909"
+                                            type="tel"
+                                            id="phone"
+                                            placeholder="e.g. +254709090909"
                                             className="form-control"
                                         />
                                     </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="">
-                                            Enter Your Password
+
+                                    {/* Password */}
+                                    <div className="mb-4">
+                                        <label
+                                            htmlFor="password"
+                                            className="form-label"
+                                        >
+                                            Password
                                         </label>
+
                                         <input
                                             type="password"
-                                            placeholder="Type your password"
+                                            id="password"
+                                            placeholder="Create a password"
                                             className="form-control"
                                         />
                                     </div>
-                                    <button className="btn btn-primary btn-sm w-100">
-                                        Login
+
+                                    <button
+                                        type="submit"
+                                        className="btn btn-primary w-100"
+                                    >
+                                        Create Account
                                     </button>
-                                    <h6 className="my-3">
-                                        Don't have an account?
+
+                                    <div className="text-center mt-4">
+                                        <span className="text-muted">
+                                            Already have an account?
+                                        </span>
+
                                         <Link
-                                        to="/signup"
-                                        className="ms-2"
-                                        style={{
-                                            textDecoration: "none"
-                                        }}
+                                            to="/login"
+                                            className="ms-2 text-decoration-none fw-semibold"
                                         >
-                                            Register Now
+                                            Login
                                         </Link>
-                                    </h6>
+                                    </div>
+
                                 </form>
                             </div>
+
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     );
-}
- 
+};
+
 export default JobSeeker;
