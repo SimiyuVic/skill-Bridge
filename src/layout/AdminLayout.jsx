@@ -28,6 +28,11 @@ const AdminLayout = () => {
             icon: <FaUsers />
         },
         {
+            name: "Jobs",
+            path: "/admin/jobs",
+            icon: <FaUsers />
+        },
+        {
             name: "Settings",
             path: "/admin/settings",
             icon: <FaCog />

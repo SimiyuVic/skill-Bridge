@@ -16,7 +16,7 @@ const SideBar = ({ links, title }) => {
                         style={({ isActive }) => ({
                             color: "#fff",
                             backgroundColor: isActive
-                                ? "#425B9A"
+                                ? "#E5D3AF"
                                 : "transparent",
                             transition: "0.2s ease"
                         })}
