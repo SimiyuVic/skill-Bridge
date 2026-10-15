@@ -4,7 +4,7 @@ const DashboardNavBar = () => {
         <div>
             <nav className="d-flex justify-content-between">
                 <div className="text-white">
-                    <h5>
+                    <h5 >
                        Welcome Admin  {/* we will replace this with username */}
                     </h5>
                     <p>
