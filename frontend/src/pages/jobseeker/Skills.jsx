@@ -1,4 +1,7 @@
-const SkillsPage = () => {
+
+import { MdCode, MdSchool } from "react-icons/md";
+
+const Skills = () => {
     return (
         <div className="p-3">
             <div className="mb-4">
@@ -108,6 +111,6 @@ const SkillsPage = () => {
             </div>
         </div>
     );
-}
+};
 
-export default SkillsPage;
+export default Skills;

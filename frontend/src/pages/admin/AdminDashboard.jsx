@@ -1,3 +1,4 @@
+
 const AdminDashboard = () => {
     return (
         <div className="p-3">
@@ -43,6 +44,6 @@ const AdminDashboard = () => {
             </div>
         </div>
     );
-}
+};
 
 export default AdminDashboard;

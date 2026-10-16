@@ -1,22 +1,28 @@
-import { AiFillDashboard } from "react-icons/ai";
-import { FaFolderPlus } from "react-icons/fa";
-import { FaUsers } from "react-icons/fa6";
-import { IoMdCog } from "react-icons/io";
-import SideBar from "../components/SideBar";
+
 import DashboardNavBar from "../components/DashboardNavBar";
+import SideBar from "../components/SideBar";
 import { Outlet } from "react-router-dom";
+import { AiOutlineDashboard } from "react-icons/ai";
+import { FaUsers, FaCog } from "react-icons/fa";
+import { MdWork, MdPostAdd } from "react-icons/md";
 
 const EmployerLayout = () => {
+
     const employerLinks = [
         {
             name: "Dashboard",
             path: "/employer",
-            icon: <AiFillDashboard />
+            icon: <AiOutlineDashboard />
         },
         {
-            name: "Post Job",
-            path: "/employer/create-job",
-            icon: <FaFolderPlus />
+            name: "Post a Job",
+            path: "/employer/post-job",
+            icon: <MdPostAdd />
+        },
+        {
+            name: "My Jobs",
+            path: "/employer/jobs",
+            icon: <MdWork />
         },
         {
             name: "Applicants",
@@ -26,45 +32,26 @@ const EmployerLayout = () => {
         {
             name: "Settings",
             path: "/employer/settings",
-            icon: <IoMdCog />
+            icon: <FaCog />
         }
     ];
 
     return (
-        <div>
-            <div className="d-flex flex-grow-1 m-3">
-                {/* Sidebar Container */}
+        <div className="layout">
+            <SideBar links={employerLinks} title="Employer Dashboard" />
+
+            <main className="content">
                 <div
-                    className="card border-0 shadow-sm p-3 me-3 text-white"
-                    style={{
-                        backgroundColor: "#790D16", // Slate / Dark Charcoal
-                        width: "300px",
-                        minHeight: "90vh"
-                    }}
+                    className="card p-3 border-0 shadow-sm text-white"
+                    style={{ backgroundColor: "#66A3BF" }}
                 >
-                    <SideBar links={employerLinks} title="Employer Dashboard" />
+                    <DashboardNavBar />
                 </div>
 
-                {/* Main Content & Navbar Container */}
-                <div className="flex-grow-1">
-                    {/* Navbar */}
-                    <div
-                        className="card border-0 shadow-sm px-4 d-flex justify-content-center"
-                        style={{
-                            backgroundColor: "#AEC4D4", // Off-white / Soft Slate Light
-                            height: "100px",
-                            color: "#0F172A"
-                        }}
-                    >
-                        <DashboardNavBar />
-                    </div>
-
-                    {/* Page Content Outlet */}
-                    <div className="mt-3">
-                        <Outlet />
-                    </div>
+                <div className="mt-3">
+                    <Outlet />
                 </div>
-            </div>
+            </main>
         </div>
     );
 };

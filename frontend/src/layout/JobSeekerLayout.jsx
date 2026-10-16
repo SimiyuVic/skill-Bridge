@@ -1,72 +1,66 @@
-import SideBar from "../components/SideBar";
-import { AiFillDashboard } from "react-icons/ai";
-import { IoBook } from "react-icons/io5";
-import { MdAddChart } from "react-icons/md";
-import { IoMdCog } from "react-icons/io";
-import { FaHandsHelping } from "react-icons/fa";
-import DashboardNavBar from "../components/DashboardNavBar";
 import { Outlet } from "react-router-dom";
+import DashboardNavBar from "../components/DashboardNavBar";
+import SideBar from "../components/SideBar";
+import { MdDashboardCustomize } from "react-icons/md";
+import { BsJournalPlus } from "react-icons/bs";
+import { SiHyperskill } from "react-icons/si";
+import { GiCog } from "react-icons/gi";
+import { FaHandsHelping } from "react-icons/fa";
 
 
-const JobSeekerLayout = () => {
+
+
+
+
+const JobSeekerlayout = () => {
 
     const seekerLinks = [
         {
             name: "Dashboard",
             path: "/job-seeker",
-            icon: <AiFillDashboard />
+            icon: <MdDashboardCustomize />
         },
         {
             name: "Applications",
             path: "/job-seeker/applications",
-            icon: <IoBook />
+            icon: <BsJournalPlus />
         },
         {
-            name: "My Skills",
+            name: "Skills Page",
             path: "/job-seeker/skills",
-            icon: <MdAddChart />
+            icon: <SiHyperskill />
         },
         {
             name: "Settings",
             path: "/job-seeker/settings",
-            icon: <IoMdCog />
+            icon: <GiCog />
         },
         {
-            name: "Help Section",
+            name: "Help",
             path: "/job-seeker/help",
             icon: <FaHandsHelping />
-        },
+        }
     ];
 
-    return ( 
-        <div>
-            <div className="d-flex m-3" >
+
+    return (
+        <div className="layout">
+            <SideBar links={seekerLinks} title="JobSeeker Dashboard" />
+
+            <main className="content">
                 <div
-                   className="card border-0 shadow-sm p-3 me-3" 
-                   style={{
-                    backgroundColor: "#086288",
-                    width: "300px",
-                    minHeight: "90vh"
-                   }}
+                    className="card p-3 border-0 shadow-sm text-white"
+                    style={{ backgroundColor: "#66A3BF" }}
                 >
-                    <SideBar links={ seekerLinks } title="JobSeeker Dashboard" />
+                    <DashboardNavBar />
                 </div>
-                <div className="flex-grow-1">
-                    <div
-                     className="card border-0 shadow-sm p-3"
-                     style={{
-                        backgroundColor: "#4D8DBA"
-                     }}
-                    >
-                        <DashboardNavBar />
-                    </div>
-                    <div>
-                        <Outlet />
-                    </div>
+
+                <div className="mt-3">
+                    <Outlet />
                 </div>
-            </div>
+            </main>
         </div>
-     );
+    );
 }
- 
-export default JobSeekerLayout;
+
+export default JobSeekerlayout;

@@ -1,3 +1,4 @@
+
 const AdminEmployer = () => {
     return (
         <div className="p-3">
@@ -30,6 +31,6 @@ const AdminEmployer = () => {
             </div>
         </div>
     );
-}
+};
 
 export default AdminEmployer;

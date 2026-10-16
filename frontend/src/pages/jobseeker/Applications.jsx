@@ -1,4 +1,5 @@
-const AppliedJobs = () => {
+
+const JobSeekerApplication = () => {
     return (
         <div className="p-3">
             <div className="mb-4">
@@ -35,6 +36,6 @@ const AppliedJobs = () => {
             </div>
         </div>
     );
-}
+};
 
-export default AppliedJobs;
+export default JobSeekerApplication;

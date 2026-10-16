@@ -1,3 +1,4 @@
+
 const AdminSettings = () => {
     return (
         <div className="p-3">
@@ -38,6 +39,6 @@ const AdminSettings = () => {
             </div>
         </div>
     );
-}
+};
 
 export default AdminSettings;
