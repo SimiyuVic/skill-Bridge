@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./config/config.js";
+import employerRoutes from "./routes/employer.routes.js"
 
 
 dotenv.config(); // allows us to process environment variables
@@ -8,6 +9,17 @@ dotenv.config(); // allows us to process environment variables
 const app = express();
 
 const MYPORT = process.env.PORT;
+
+//health check
+app.use("/api/v1/health", (req, res)=>{
+    res.status(200).json({
+        success: true,
+        message: "Backend working just fine"
+    });
+});
+
+//paths
+app.use("/api/v1/employer", employerRoutes);
 
 const startServer = async () => {
 
