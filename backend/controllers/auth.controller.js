@@ -51,6 +51,15 @@ export const loginUser = async(req, res)=>{
             }
         );
 
+        //create a cookie
+        res.cookie("skillBridge", token,{
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            path: "/",
+            maxAge: 2 * 24 * 60 * 60 * 1000
+        });
+
         return res.status(200).json({
             success: true,
             message: `Welcome back ${user.fullname}`,

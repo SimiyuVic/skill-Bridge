@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { connectDB } from "./config/config.js";
 import employerRoutes from "./routes/employer.routes.js"
 import authRoutes from "./routes/auth.routes.js";
+import cors from "cors";
 
 
 dotenv.config(); // allows us to process environment variables
@@ -10,11 +11,18 @@ dotenv.config(); // allows us to process environment variables
 const app = express();
 
 app.use(express.json());
+app.use(cors({
+    origin: [
+        "http://localhost:5173",
+        ""
+    ],
+    credentials: true
+}));
 
 const MYPORT = process.env.PORT;
 
 //health check
-app.use("/api/v1/health", (req, res)=>{
+app.use("/api/v1/health", (req, res) => {
     res.status(200).json({
         success: true,
         message: "Backend working just fine"
