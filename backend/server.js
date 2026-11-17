@@ -4,7 +4,7 @@ import { connectDB } from "./config/config.js";
 import employerRoutes from "./routes/employer.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import jobSeekerRoutes from "./routes/jobseeker.routes.js";
-import cors from "cors";
+import cors from "cors"; 
 
 dotenv.config(); // allows us to process environment variables
 //create an instance of express
