@@ -5,12 +5,14 @@ import employerRoutes from "./routes/employer.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import jobSeekerRoutes from "./routes/jobseeker.routes.js";
 import cors from "cors"; 
+import cookieParser from "cookie-parser";
 
 dotenv.config(); // allows us to process environment variables
 //create an instance of express
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(
   cors({
     origin: ["http://localhost:5173", ""],

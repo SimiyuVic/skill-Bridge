@@ -72,3 +72,40 @@ export const loginUser = async (req, res) => {
     });
   }
 };
+
+//check cookie
+export const checkCookie = async(req, res)=>{
+  try{
+    const token = req.cookies.skillBridge;
+
+    if(token){
+      return res.status(200).json({
+        message: true
+      });
+    }
+    return res.status(200).json({
+      message: false
+    });
+
+  }
+  catch(error){
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong"
+    });
+  }
+};
+
+export const getUserDetails = async(req, res)=>{
+  try{
+      const {user} = req;
+      console.log(user);
+  }
+  catch(error){
+    return res.status(500).json({
+      success: false,
+      message: "Something Went wrong!"
+    });
+  }
+}
