@@ -74,11 +74,11 @@ export const loginUser = async (req, res) => {
 };
 
 //check cookie
-export const checkCookie = async(req, res)=>{
-  try{
+export const checkCookie = async (req, res) => {
+  try {
     const token = req.cookies.skillBridge;
 
-    if(token){
+    if (token) {
       return res.status(200).json({
         message: true
       });
@@ -88,7 +88,7 @@ export const checkCookie = async(req, res)=>{
     });
 
   }
-  catch(error){
+  catch (error) {
     console.log(error);
     return res.status(500).json({
       success: false,
@@ -97,15 +97,41 @@ export const checkCookie = async(req, res)=>{
   }
 };
 
-export const getUserDetails = async(req, res)=>{
-  try{
-      const {user} = req;
-      console.log(user);
+export const getUserDetails = async (req, res) => {
+  try {
+    const { user } = req;
+    res.status(200).json({
+      success: true,
+      user
+    });
   }
-  catch(error){
+  catch (error) {
     return res.status(500).json({
       success: false,
       message: "Something Went wrong!"
     });
+  }
+};
+
+export const logoutUser = async (req, res) => {
+  try {
+    res.clearCookie("skillBridge", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      path: "/",
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Logged Out!"
+    });
+  }
+  catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong"
+    })
   }
 }
