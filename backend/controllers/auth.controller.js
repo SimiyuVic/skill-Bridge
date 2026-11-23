@@ -139,6 +139,8 @@ export const logoutUser = async (req, res) => {
 //change avatar
 export const changeAvatar = async (req, res) => {
   try {
+    const { user } = req;
+
     const { file } = req;
 
     if (!file) {
@@ -148,7 +150,14 @@ export const changeAvatar = async (req, res) => {
       });
     }
     
-    console.log(file);
+    user.avatar  = file.path;
+    await user.save();
+
+    return res.status(201).json({
+      success: true,
+      message: "Avatar updated"
+    });
+
   }
   catch (error) {
     //console.log(error);

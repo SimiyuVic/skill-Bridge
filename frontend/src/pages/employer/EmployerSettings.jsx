@@ -8,7 +8,9 @@ const EmployerSettings = () => {
 
     const [preview, setPreview] = useState("");
     const [avatar, setAvatar] = useState("");
-    const backendUrl = useSelector((state)=>state.prod.link);
+    const backendUrl = useSelector((state) => state.prod.link);
+    const [loading, setLoading] = useState(false);
+    const userData = useSelector((state) => state.auth.user);
 
     //show an image preview
     const handlePreview = (e) => {
@@ -19,8 +21,26 @@ const EmployerSettings = () => {
     }
 
     //upload the avatar
-    const handleAvatar = async()=>{
-        
+    const handleAvatar = async () => {
+
+        const imageUpload = new FormData();
+        imageUpload.append("profile", avatar);
+
+        try {
+            setLoading(true);
+            const response = await axios.patch(`${backendUrl}/api/v1/auth/change-avatar`, imageUpload, {
+                withCredentials: true
+            });
+
+            toast.success(response.data.message);
+        }
+        catch (error) {
+            toast.error(error.response.data.message);
+            setLoading(false);
+        }
+        finally {
+            setLoading(false);
+        }
     }
 
     return (
@@ -58,10 +78,16 @@ const EmployerSettings = () => {
                             >
                                 {
                                     preview ? (
-                                        <img 
-                                         src={preview}
-                                         className="w-100 h-100"
-                                         style={{objectFit: "cover"}}
+                                        <img
+                                            src={preview}
+                                            className="w-100 h-100"
+                                            style={{ objectFit: "cover" }}
+                                        />
+                                    ) : userData?.avatar ? (
+                                        <img
+                                            src={userData?.avatar}
+                                            className="w-100 h-100"
+                                            style={{ objectFit: "cover" }}
                                         />
                                     ) : (
                                         <FaUserCircle
@@ -82,13 +108,27 @@ const EmployerSettings = () => {
                             onChange={handlePreview}
                         />
 
-                        <button
-                            type="button"
-                            className="btn btn-primary btn-sm mt-3"
-                        >
-                            <FaCamera className="me-2" />
-                            Change Avatar
-                        </button>
+                        {
+                            loading ? (
+                                <button
+                                    disabled
+                                    type="button"
+                                    className="btn btn-warning btn-sm mt-3"
+                                >
+                                    <FaCamera className="me-2" />
+                                    Changing Avatar . . .
+                                </button>
+                            ) : (
+                                <button
+                                    onClick={handleAvatar}
+                                    type="button"
+                                    className="btn btn-primary btn-sm mt-3"
+                                >
+                                    <FaCamera className="me-2" />
+                                    Change Avatar
+                                </button>
+                            )
+                        }
 
                     </div>
 
