@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { FaUserCircle, FaCamera } from "react-icons/fa";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const EmployerSettings = () => {
 
     const [preview, setPreview] = useState("");
     const [avatar, setAvatar] = useState("");
+    const backendUrl = useSelector((state)=>state.prod.link);
 
     //show an image preview
     const handlePreview = (e) => {
@@ -12,6 +16,11 @@ const EmployerSettings = () => {
         if (!file) return;
         setAvatar(file);
         setPreview(URL.createObjectURL(file));
+    }
+
+    //upload the avatar
+    const handleAvatar = async()=>{
+        
     }
 
     return (

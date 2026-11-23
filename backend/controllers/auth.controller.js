@@ -134,4 +134,27 @@ export const logoutUser = async (req, res) => {
       message: "Something went wrong"
     })
   }
+};
+
+//change avatar
+export const changeAvatar = async (req, res) => {
+  try {
+    const { file } = req;
+
+    if (!file) {
+      return res.status(400).json({
+        success: false,
+        message: "No image selected"
+      });
+    }
+    
+    console.log(file);
+  }
+  catch (error) {
+    //console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong"
+    });
+  }
 }
