@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
+import Job from "../models/job.model.js";
 
 export const createUser = async (req, res) => {
   try {
@@ -63,3 +64,77 @@ export const createUser = async (req, res) => {
     });
   }
 };
+
+//post jobs
+export const postJobs = async (req, res) => {
+
+  const { user } = req;
+
+  try {
+    const { jobTitle, location, employmentType, jobDescription, jobRequirements, experience, deadline } = req.body;
+
+    //form validation
+    if (!jobTitle || !location || !employmentType || !jobDescription || !jobRequirements || !experience || !deadline) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields required"
+      });
+    }
+
+    //save the job details
+    const newJobPost = new Job({
+      jobTitle,
+      location,
+      employmentType,
+      jobDescription,
+      jobRequirements,
+      experience,
+      deadline,
+      employer: user._id,
+      paymentStatus: "unpaid",
+      isPublished: false,
+      companyName: user.fullname
+    });
+
+    await newJobPost.save();
+
+    return res.status(201).json({
+      success: true,
+      message: "Job created, but not published"
+    });
+  }
+  catch (error) {
+    //console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong"
+    });
+  }
+};
+
+//fetch jobs posted by a particular employer
+export const fetchEmployerJob = async (req, res) => {
+  const { user } = req;
+  try {
+    const jobs = await Job.find({ employer: user._id });
+
+    if (!jobs) {
+      return res.status(404).json({
+        success: false,
+        message: "No jobs found under this account"
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      jobs
+    });
+  }
+  catch (error) {
+    //console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong"
+    });
+  }
+}
