@@ -12,7 +12,7 @@ export const authMiddleware = {
             });
         }
         try {
-            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const decoded = jwt.verify(token, process.env.JWT_SECRET); 
 
             //fetch user details as per the id in the decode token
             const user = await User.findById(decoded.id);

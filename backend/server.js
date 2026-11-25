@@ -4,6 +4,7 @@ import { connectDB } from "./config/config.js";
 import employerRoutes from "./routes/employer.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import jobSeekerRoutes from "./routes/jobseeker.routes.js";
+import adminRoutes from "./routes/admin.routes.js";
 import cors from "cors"; 
 import cookieParser from "cookie-parser";
 
@@ -34,6 +35,7 @@ app.use("/api/v1/health", (req, res) => {
 app.use("/api/v1/employer", employerRoutes);
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/jobseeker", jobSeekerRoutes);
+app.use("/api/v1/admin", adminRoutes);
 
 const startServer = async () => {
   connectDB();

@@ -43,7 +43,7 @@ const jobSchema = new mongoose.Schema({
     employer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-        required: true
+        required: true 
     },
     paymentStatus: {
         type: String,

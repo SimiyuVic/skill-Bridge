@@ -18,5 +18,5 @@ router.get("/employer-jobs",
     authMiddleware.verifyToken,
     authMiddleware.authorizeRole("employer"),
     fetchEmployerJob);
-
+ 
 export default router;
