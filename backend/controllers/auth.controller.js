@@ -166,4 +166,6 @@ export const changeAvatar = async (req, res) => {
       message: "Something went wrong"
     });
   }
-}
+};
+
+
