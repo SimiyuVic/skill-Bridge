@@ -55,7 +55,7 @@ const jobSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     }
-});
+}, {timeStamps: true});
 
 const Job = mongoose.model("Job", jobSchema);
 export default Job;

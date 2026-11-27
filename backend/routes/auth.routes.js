@@ -1,6 +1,7 @@
 import express from "express";
 import { 
     changeAvatar,
+    jobDetails,
     checkCookie, 
     getUserDetails, 
     loginUser, 
@@ -30,5 +31,8 @@ router.patch("/change-avatar",
     authMiddleware.verifyToken,
     upload.single("profile"),
     changeAvatar);
+
+//fetch job details
+router.get("/job-details/:id", jobDetails);
 
 export default router;

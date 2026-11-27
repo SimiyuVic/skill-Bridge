@@ -137,4 +137,64 @@ export const fetchEmployerJob = async (req, res) => {
       message: "Something went wrong"
     });
   }
+};
+
+//update job
+export const updateJob = async (req, res) => {
+  try {
+    //receive the id of the job
+    const jobId = req.params.id;
+
+    const { jobTitle, location, jobDescription, jobRequirements } = req.body;
+
+    if (!jobId) {
+      return res.status(404).json({
+        success: false,
+        message: "No such job exists"
+      });
+    }
+
+    if (!jobTitle || !location || !jobDescription || !jobRequirements) {
+      return res.status(400).json({
+        success: false,
+        message: "All job fields are required"
+      });
+    }
+
+    const updatedJob = await Job.findByIdAndUpdate(
+      jobId,
+      {
+        $set: {
+          jobTitle,
+          location,
+          jobDescription,
+          jobRequirements,
+        },
+      },
+      {
+        new: true,          // Return the modified document rather than the original
+        runValidators: true // Enforce schema validation rules on update
+      }
+    );
+
+    if (!updatedJob) {
+      return res.status(404).json({
+        success: false,
+        message: "No job updated"
+      })
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Job updated successfully"
+    });
+
+  }
+  catch (error) {
+    //console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong"
+    });
+  }
 }

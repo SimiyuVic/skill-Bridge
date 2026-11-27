@@ -1,5 +1,5 @@
 import express from "express";
-import { createUser, fetchEmployerJob, postJobs } from "../controllers/employer.controller.js";
+import { createUser, fetchEmployerJob, postJobs, updateJob } from "../controllers/employer.controller.js";
 import { authMiddleware } from "../middleware/auth.middleware.js";
 
 const router = express.Router();
@@ -18,5 +18,8 @@ router.get("/employer-jobs",
     authMiddleware.verifyToken,
     authMiddleware.authorizeRole("employer"),
     fetchEmployerJob);
+
+//update job
+router.put("/update-job/:id", updateJob);
  
 export default router;

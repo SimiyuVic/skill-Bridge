@@ -35,6 +35,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "./store/auth.js"
+import EditJob from "./pages/employer/EditJob.jsx"
 
 function App() {
 
@@ -98,6 +99,7 @@ function App() {
           <Route path="applicants" element={ <Applicants /> } />
           <Route path="post-job" element={ <JobPost /> } />
           <Route path="settings" element={ <EmployerSettings /> } />
+          <Route path="edit-job/:id" element={ <EditJob /> } />
         </Route>
 
 

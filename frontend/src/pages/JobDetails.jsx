@@ -1,14 +1,39 @@
 import { Link, useParams } from "react-router-dom"
-import useFetch from "../hook/useFetch.js";
 import { CiLocationOn } from "react-icons/ci";
 import { IoBriefcaseOutline } from "react-icons/io5";
+import { useState, useEffect } from "react"
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 
 
 const JobDetails = () => {
 
     const { id } = useParams();
-    const { allData: job, error, loading } = useFetch(`http://localhost:4000/jobs/${id}`);
+    //console.log(id);
+    const [loading, setLoading] = useState(false);
+    const [job, setJob] = useState(null);
+    const backendLink = useSelector((state)=>state.prod.link);
+
+
+    //fetch job details
+
+    useEffect(()=>{
+        const fetchJobDetails = async()=>{
+            try{
+                const response = await axios.get(`${backendLink}/api/v1/auth/job-details/${id}`, {
+                    withCredentials: true
+                });
+                console.log(response?.data.jobInfo);
+                setJob(response?.data.jobInfo);
+            }
+            catch(error){
+                toast.error(error.response?.data.message || "Cannothe fetch job details");
+            }
+        }
+        fetchJobDetails();
+    }, [backendLink])
 
 
     return (
@@ -22,7 +47,7 @@ const JobDetails = () => {
                         <span>Loading job details, please wait...</span>
                     </div>
                 )}
-                {error &&  <div className="text-danger fw-bold"> { error } </div> }
+
                 {job &&
                     <div className="row gap-4">
                         <div className="col-md-7">
@@ -41,12 +66,16 @@ const JobDetails = () => {
                                     </span>
                                     <span>
                                         <h6>Employment Type</h6>
-                                        <IoBriefcaseOutline /> {job.discretion}
+                                        <IoBriefcaseOutline /> {job.employmentType}
                                     </span>
                                 </div>
                                 <h6 className="my-3"> Job Description</h6>
                                 <p>
                                     {job.jobDescription}
+                                </p>
+                                <h6 className="my-3"> Job Requirements</h6>
+                                <p>
+                                    {job.jobRequirements}
                                 </p>
                             </div>
                         </div>

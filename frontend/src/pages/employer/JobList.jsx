@@ -11,6 +11,7 @@ import {
     FaMoneyBillWave,
     FaArrowRight
 } from "react-icons/fa";
+import { Link } from "react-router-dom"
 
 const JobList = () => {
 
@@ -231,6 +232,13 @@ const JobList = () => {
                                                 {job.jobDescription?.slice(0, 150)}
                                                 {job.jobDescription?.length > 150 && "..."}
                                             </p>
+
+                                            <Link
+                                                className="btn btn-primary"
+                                                to={`/employer/edit-job/${job._id}`}
+                                            >
+                                                View Job
+                                            </Link>
 
                                         </div>
 

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Jobs = () => {
 
@@ -154,6 +155,8 @@ const Jobs = () => {
                                                 {job.jobDescription?.length > 150 && "..."}
                                             </p>
 
+                                            
+
                                         </div>
 
 
@@ -180,13 +183,13 @@ const Jobs = () => {
                                                     )}
                                                 </div>
 
-                                                <button
+                                                <Link
                                                     className="btn btn-outline-primary btn-sm px-4"
-                                                    onClick={() => console.log("Selected job:", job._id)}
+                                                    to={`/job-details/${job._id}`}
                                                 >
                                                     View Details
                                                     <i className="bi bi-arrow-right ms-2"></i>
-                                                </button>
+                                                </Link>
 
                                             </div>
 

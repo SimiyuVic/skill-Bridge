@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import Job from "../models/job.model.js";
 
 export const loginUser = async (req, res) => {
   try {
@@ -167,5 +168,36 @@ export const changeAvatar = async (req, res) => {
     });
   }
 };
+
+
+//fetch job details
+export const jobDetails = async(req, res)=>{
+  try{
+    const jobId = req.params.id;
+
+    if(!jobId){
+      return res.status(404).json({
+        success: false,
+        message: "Job not found"
+      });
+    }
+
+    const jobInfo = await Job.findById(jobId);
+    //console.log(jobInfo);
+
+    return res.status(200).json({
+      success: true,
+      jobInfo
+    });
+
+  }
+  catch(error){
+    //console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong"
+    });
+  }
+}
 
 
